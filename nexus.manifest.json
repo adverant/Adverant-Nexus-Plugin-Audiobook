@@ -1,0 +1,242 @@
+{
+  "name": "nexus-audiobook",
+  "displayName": "Audiobook - AI-Powered Audiobook Production",
+  "version": "1.0.0",
+  "description": "Transform your books into professional audiobooks using AI narration, voice cloning, and multi-voice technology. Create broadcast-quality audiobooks at 90% lower cost.",
+  "developer": {
+    "name": "Adverant",
+    "url": "https://adverant.ai",
+    "email": "plugins@adverant.ai",
+    "verified": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adverant/Adverant-Nexus-Plugin-Audiobook"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "audiobook",
+    "tts",
+    "text-to-speech",
+    "voice-cloning",
+    "ai-narration",
+    "elevenlabs",
+    "audio-production"
+  ],
+  "nexus": {
+    "minVersion": "1.0.0",
+    "executionMode": "mcp_container",
+    "isolationLevel": 2,
+    "capabilities": [
+      "audiobook-generation",
+      "voice-matching",
+      "voice-cloning",
+      "audio-processing",
+      "chapter-markers",
+      "multi-format-export"
+    ],
+    "permissions": [
+      "network:api.elevenlabs.io",
+      "network:api.play.ht",
+      "filesystem:temp",
+      "service:mageagent",
+      "service:fileprocess"
+    ],
+    "entrypoint": "dist/index.js",
+    "healthCheck": "/audiobook/api/health",
+    "readinessCheck": "/audiobook/api/health/ready",
+    "livenessCheck": "/audiobook/api/health/live"
+  },
+  "resources": {
+    "cpuMillicores": 2000,
+    "memoryMB": 4096,
+    "diskGB": 50,
+    "timeoutMs": 3600000,
+    "maxConcurrentJobs": 5
+  },
+  "api": {
+    "version": "v1",
+    "basePath": "/audiobook/api",
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/projects",
+        "description": "Create audiobook project",
+        "rateLimit": "10/minute"
+      },
+      {
+        "method": "GET",
+        "path": "/projects/:id",
+        "description": "Get project details"
+      },
+      {
+        "method": "POST",
+        "path": "/projects/:id/assign-voices",
+        "description": "Auto-assign character voices"
+      },
+      {
+        "method": "POST",
+        "path": "/projects/:id/generate",
+        "description": "Start audiobook generation"
+      },
+      {
+        "method": "GET",
+        "path": "/projects/:id/status",
+        "description": "Get generation status"
+      },
+      {
+        "method": "GET",
+        "path": "/projects/:id/download",
+        "description": "Download completed audiobook"
+      },
+      {
+        "method": "POST",
+        "path": "/voices/clone",
+        "description": "Clone a voice from audio sample"
+      },
+      {
+        "method": "GET",
+        "path": "/voices",
+        "description": "List available voices"
+      }
+    ]
+  },
+  "pricing": {
+    "model": "hybrid",
+    "currency": "USD",
+    "tiers": [
+      {
+        "name": "starter",
+        "displayName": "Starter",
+        "priceMonthly": 2900,
+        "priceYearly": 29000,
+        "limits": {
+          "hoursPerMonth": 10,
+          "charactersPerHour": 5,
+          "voiceClones": 0
+        },
+        "features": [
+          "basic-tts",
+          "mp3-export",
+          "standard-quality"
+        ]
+      },
+      {
+        "name": "author",
+        "displayName": "Author",
+        "priceMonthly": 7900,
+        "priceYearly": 79000,
+        "limits": {
+          "hoursPerMonth": 50,
+          "charactersPerHour": 20,
+          "voiceClones": 2
+        },
+        "features": [
+          "elevenlabs-access",
+          "voice-matching",
+          "m4b-export",
+          "chapter-markers",
+          "api-access"
+        ]
+      },
+      {
+        "name": "publisher",
+        "displayName": "Publisher",
+        "priceMonthly": 24900,
+        "priceYearly": 249000,
+        "limits": {
+          "hoursPerMonth": 200,
+          "charactersPerHour": 50,
+          "voiceClones": 10
+        },
+        "features": [
+          "all-providers",
+          "priority-processing",
+          "bulk-generation",
+          "advanced-voice-matching"
+        ],
+        "popular": true
+      },
+      {
+        "name": "enterprise",
+        "displayName": "Enterprise",
+        "priceMonthly": 99900,
+        "priceYearly": 999000,
+        "limits": {
+          "hoursPerMonth": -1,
+          "charactersPerHour": -1,
+          "voiceClones": -1
+        },
+        "features": [
+          "everything",
+          "white-label-export",
+          "dedicated-support",
+          "custom-integration"
+        ]
+      }
+    ],
+    "usage": {
+      "hourOverage": {
+        "unit": "hour",
+        "priceCents": 500
+      },
+      "voiceCloneOverage": {
+        "unit": "clone",
+        "priceCents": 2500
+      }
+    }
+  },
+  "ui": {
+    "tier": 2,
+    "type": "template",
+    "capabilities": [
+      {
+        "type": "template",
+        "template": "audiobook-studio",
+        "config": {
+          "sections": ["project", "voices", "generation", "download"]
+        }
+      }
+    ],
+    "navigation": {
+      "location": "dedicated-tab",
+      "icon": "headphones",
+      "label": "Audiobook"
+    }
+  },
+  "marketplace": {
+    "category": "content-creation",
+    "subcategory": "audio-production",
+    "tags": [
+      "audiobook",
+      "tts",
+      "voice-cloning",
+      "ai-narration",
+      "audio",
+      "publishing"
+    ],
+    "featured": true,
+    "documentation": "https://docs.adverant.ai/plugins/audiobook",
+    "support": {
+      "email": "support@adverant.ai",
+      "docs": "https://docs.adverant.ai/plugins/audiobook",
+      "chat": "https://discord.gg/adverant"
+    }
+  },
+  "integrations": {
+    "required": [
+      {
+        "service": "prosecreator",
+        "minVersion": "1.0.0",
+        "purpose": "Source content from ProseCreator projects"
+      }
+    ],
+    "optional": [
+      {
+        "service": "fileprocess",
+        "minVersion": "1.0.0",
+        "purpose": "Audio file processing and conversion"
+      }
+    ]
+  }
+}
