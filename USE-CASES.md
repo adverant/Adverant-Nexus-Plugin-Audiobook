@@ -88,9 +88,9 @@ class IndieAuthorWorkflow {
 
 ### Business Impact
 
-- **90% cost reduction** ($300 vs $3,000+ per book)
-- **2-day turnaround** vs 6-8 weeks
-- **Immediate ROI** on audiobook investment
+- **Significant cost reduction** compared to traditional studio production
+- **Faster turnaround** measured in days rather than weeks
+- **Lower barrier to entry** for audiobook market
 
 ---
 
@@ -163,9 +163,9 @@ class MultiVoiceAudiobook {
 
 ### Business Impact
 
-- **Unlimited character voices** at no extra cost
+- **Multiple character voices** available at fixed cost
 - **Consistent character voices** throughout series
-- **Engaging listening experience** that rivals full cast productions
+- **More engaging listening experience** compared to single-narrator productions
 
 ---
 
@@ -244,7 +244,7 @@ class SeriesAudiobookProduction:
 ### Business Impact
 
 - **Voice consistency** across entire series
-- **Bulk pricing discounts** for series production
+- **Volume pricing** available for series production
 - **Streamlined workflow** for multi-book projects
 
 ---
@@ -327,7 +327,7 @@ class CatalogConversionService {
 
 ### Business Impact
 
-- **Entire backlist converted** at fraction of traditional cost
+- **Backlist conversion** at lower cost than traditional methods
 - **New revenue stream** from audio-only customers
 - **Automated quality control** with human review for edge cases
 
@@ -393,9 +393,9 @@ class AuthorVoiceCloning:
 
 ### Business Impact
 
-- **Authentic author voice** without studio time
+- **Authentic author voice** without extensive studio time
 - **Personal connection** with readers
-- **Premium pricing opportunity** for author-narrated editions
+- **Differentiation opportunity** for author-narrated editions
 
 ---
 
